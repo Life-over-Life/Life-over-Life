@@ -10,7 +10,9 @@ class App extends React.Component {
         super(props);
         this.state = {
             view: 'home',
-            data: []
+            bedsData: [],
+            nursesData: [],
+            diseasesData: [],
         }
     }
 
@@ -20,10 +22,28 @@ class App extends React.Component {
             url: '/beds',
             success: (result) => {
                 this.setState({
-                    data: result
+                    bedsData: result
                 })
             }
-        })
+        });
+        $.ajax({
+            type: 'GET',
+            url: '/nurses',
+            success: (result) => {
+                this.setState({
+                    nursesData: result
+                })
+            }
+        });
+        $.ajax({
+            type: 'GET',
+            url: '/diseases',
+            success: (result) => {
+                this.setState({
+                    nursesData: result
+                })
+            }
+        });
     }
 
     changeView(option) {
@@ -45,7 +65,8 @@ class App extends React.Component {
             var currentView = <IndecisionApp />
         }
 
-        console.log(this.state.data)
+        console.log('bedsData', this.state.bedsData);
+        console.log('nursesData', this.state.nursesData);
         return (
             <div>
                 <div className="nav">

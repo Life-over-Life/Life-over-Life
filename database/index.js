@@ -13,6 +13,28 @@ const getAllBedsData = (beds, callback) => {
     })
 };
 
+const getAllNursesData = (nurses, callback) => {
+    var sql = 'SELECT * FROM nurses';
+    connection.query(sql, (error, results) => {
+        if (error) {
+            callback(error);
+        } else {
+            callback(null, results);
+        }
+    })
+};
+
+const getAllDiseases = (diseases, callback) => {
+    var sql = 'SELECT * FROM diseases';
+    connection.query(sql, (error, results) => {
+        if (error) {
+            callback(error);
+        } else {
+            callback(null, results);
+        }
+    })
+}
+
 module.exports = {
-    getAllBedsData
+    getAllBedsData, getAllNursesData, getAllDiseases
 };
