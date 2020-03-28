@@ -39,7 +39,7 @@ writeNursesData(writeUsers, 'utf-8', () => {
 });
 */
 
-
+/*
 // Create 10 data in CSV file using faker library
 const writeUsers = fs.createWriteStream('diseasesTableSQLData.csv');
 
@@ -72,9 +72,9 @@ function writeDiseasesData(writer, encoding, callback) {
 writeDiseasesData(writeUsers, 'utf-8', () => {
     writeUsers.end();
 });
+*/
 
 
-/*
 // Create 10 data in CSV file using faker library
 const writeUsers = fs.createWriteStream('bedsTableSQLData.csv');
 
@@ -107,7 +107,7 @@ function writeBedsData(writer, encoding, callback) {
             const patient_marital_status = ['true', 'false'][Math.floor(Math.random() * Math.floor(2))];
             const patient_dependents = Math.floor(Math.random() * 10);
             const patient_preexisting_serious_conditions = ['true', 'false'][Math.floor(Math.random() * Math.floor(2))];
-            const nurse_id = faker.lorem.word();
+            const nurse_id = Math.floor(Math.random()*10);
             const checkin_date = faker.date.between('2020-01-01', '2020-3-28');
             const patient_expected_discharge_date = faker.date.between('2020-03-28', '2020-8-31');
             const ventilator_needed = ['true', 'false'][Math.floor(Math.random() * Math.floor(2))];
@@ -130,4 +130,16 @@ function writeBedsData(writer, encoding, callback) {
 writeBedsData(writeUsers, 'utf-8', () => {
     writeUsers.end();
 });
+
+
+/*
+1) Sync schema to MySQL
+2) Login to the MySQL database and use the database
+3) Run the following scripts
+
+LOAD DATA LOCAL INFILE '/mnt/c/Users/hongk/Desktop/HW/hospitalTracker/database/nursesTableSQLData.csv' INTO TABLE nurses FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES (nurse_name, nurse_phone_number);
+
+LOAD DATA LOCAL INFILE '/mnt/c/Users/hongk/Desktop/HW/hospitalTracker/database/diseasesTableSQLData.csv' INTO TABLE diseases FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES (disease_name, mortality_rate_percent);
+
+LOAD DATA LOCAL INFILE '/mnt/c/Users/hongk/Desktop/HW/hospitalTracker/database/bedsTableSQLData.csv' INTO TABLE beds FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES (bed_type, bed_status, patient_id, patient_name, patient_gender, patient_age, patient_address, patient_contact_num, patient_medical_history, patient_disease, patient_symptoms, patient_condition, patient_previous_criminal_history, patient_alcoholic_status, patient_marital_status, patient_dependents, patient_preexisting_serious_conditions, nurse_id, checkin_date, patient_expected_discharge_date, ventilator_needed, other_details);
 */

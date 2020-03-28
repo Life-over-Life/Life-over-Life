@@ -5,15 +5,16 @@ CREATE DATABASE hospitalbeds;
 USE hospitalbeds;
 
 CREATE TABLE nurses (
-    nurse_id int NOT NULL AUTO_INCREMENT,
+    nurse_id INT NOT NULL AUTO_INCREMENT,
     nurse_name varchar(30),
-    nurse_phone_number int
+    nurse_phone_number int NOT NULL,
+    PRIMARY KEY (nurse_id)
 );
 
-CREATE TABLE diseases {
+CREATE TABLE diseases (
     disease_name varchar(20) NOT NULL,
     mortality_rate_percent int NOT NULL
-};
+);
 
 CREATE TABLE beds (
     bed_id int NOT NULL AUTO_INCREMENT,
@@ -34,7 +35,7 @@ CREATE TABLE beds (
     patient_marital_status ENUM('true', 'false'),
     patient_dependents int,
     patient_preexisting_serious_conditions ENUM('true', 'false'),
-    nurse_id varchar(30),
+    nurse_id int,
     checkin_date varchar(10),
     patient_expected_discharge_date varchar(10),
     ventilator_needed ENUM('true', 'false'),
