@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import IndecisionApp from './components/IndecisionApp.jsx';
-import Register from './components/Register.jsx'
+import Register from './components/Register.jsx';
+import Discharge from './components/Discharge.jsx';
 
 class App extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class App extends React.Component {
         } else if (this.state.view === 'register') {
             var currentView = <Register />
         } else if (this.state.view === 'discharge') {
-            var currentView = <IndecisionApp />
+            var currentView = <Discharge />
         } else if (this.state.view === 'bedStatus') {
             var currentView = <IndecisionApp />
         } else if (this.state.view === 'updateHospital') {

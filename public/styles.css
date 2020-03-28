@@ -38,3 +38,106 @@ body {
     margin-right: 5px;
     font-size: 1.1em;
 }
+
+/*********** Register Page Body *********/
+.wrapper {
+    position: absolute;
+    top: 15%;
+    margin-bottom: 2%;
+    width: 100%;
+}
+
+.register-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.8);
+    padding: 80px 100px;
+    border-radius: 5px;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0,0,0,0.13);
+}
+
+.register-title {
+    color: white;
+}
+
+.input-fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-fields .input {
+    margin: 10px 0;
+    display: block;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid #c5ecfd;
+    padding: 10px;
+    color: #c5ecfd;
+    width: 180%;
+}
+
+.input-fields .select {
+    margin: 10px 0;
+    font-size: 12.5px;
+    display: block;
+    background: transparent;
+    border: 0;
+    padding: 10px;
+    color: #c5ecfd;
+    width: 150%;
+}
+
+::-webkit-input-placeholder {
+    color: #c5ecfd;
+}
+
+::-moz-input-placeholder {
+    color: #c5ecfd;
+}
+
+::-ms-input-placeholder {
+    color: #c5ecfd;
+}
+
+.submitBtn {
+    background: #39b7dd;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/******* Discharger Page **********/
+.discharge-wrapper {
+    position: absolute;
+    top: 15%;
+    margin-bottom: 2%;
+    width: 100%;
+}
+
+.discharge-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.8);
+    padding: 80px 100px;
+    border-radius: 5px;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0,0,0,0.13);
+}
+
+.discharge-title {
+    color: white;
+}
+
+.dischargeBtn {
+    background: red;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+}

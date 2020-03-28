@@ -36,86 +36,58 @@ class Register extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Register A Patient</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Name:
-                        <input type="text" name="name" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Gender:
-                        <label> Male</label>
-                        <input type="radio" name="gender" value="male" onChange={this.handleChange} />
-                        <label> Female</label>
-                        <input type="radio" name="gender" value="female" onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Age:
-                        <input type="number" name="age" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Address:
-                        <input type="text" name="address" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Phone Number:
-                        <input type="text" name="contact_num" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Medical History:
-                        <input type="text" name="medical_history" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Disease(s):
-                        <input type="text" name="disease" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Symptom(s):
-                        <input type="text" name="symptoms" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Condition:
-                        <select name="condition" value={this.state.value} onChange={this.handleChange}>
-                            <option value="critical">Critical</option>
-                            <option value="non-critical">Non-critical</option>
-                        </select>
-                    </label>
-                    <label>
-                        Previous Criminal History:
-                        <label> Yes</label>
-                        <input type="radio" name="previous_criminal_history" value="true" onChange={this.handleChange} />
-                        <label> No</label>
-                        <input type="radio" name="previous_criminal_history" value="false" onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Alcoholic:
-                        <label> Yes</label>
-                        <input type="radio" name="alcoholic_status" value="true" onChange={this.handleChange} />
-                        <label> No</label>
-                        <input type="radio" name="alcoholic_status" value="false" onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Marital Status (married):
-                        <label> Yes</label>
-                        <input type="radio" name="marital_status" value="true" onChange={this.handleChange} />
-                        <label> No</label>
-                        <input type="radio" name="marital_status" value="false" onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Number of Dependents:
-                        <input type="number" name="numOfDependents" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Pre-existing Serious Condition:
-                        <select name="preexisting_serious_conditions" value={this.state.value} onChange={this.handleChange}>
-                            <option value="true">Yes</option>
-                            <option value="false">No</option>
-                        </select>
-                    </label>
+            <div className="wrapper">
+                <div className="register-form">
+                    <div className="input-fields">
+                        <h1 className="register-title">Register A Patient</h1>
+                        <form onSubmit={this.handleSubmit}>
+                            <input className="input" type="text" name="name" value={this.state.value} onChange={this.handleChange} placeholder="Name:" />
+                            <label className="select">
+                                Gender:
+                                <input type="radio" name="gender" value="male" onChange={this.handleChange} /><label> Male</label>
+                                <input type="radio" name="gender" value="female" onChange={this.handleChange} /><label> Female</label>
+                            </label>
+                            <input className="input" type="number" name="age" value={this.state.value} onChange={this.handleChange} placeholder="Age" />
+                            <input className="input" type="text" name="address" value={this.state.value} onChange={this.handleChange} placeholder="Address" />
+                            <input className="input" type="text" name="contact_num" value={this.state.value} onChange={this.handleChange} placeholder="Phone Number" />
+                            <input className="input" type="text" name="medical_history" value={this.state.value} onChange={this.handleChange} placeholder="Medical History" />
+                            <input className="input" type="text" name="disease" value={this.state.value} onChange={this.handleChange} placeholder="Disease(s)" />
+                            <input className="input" type="text" name="symptoms" value={this.state.value} onChange={this.handleChange} placeholder="Symptom(s)" />
+                            <label className="select">
+                                Condition:
+                                <select name="condition" value={this.state.value} onChange={this.handleChange}>
+                                    <option value="critical">Critical</option>
+                                    <option value="non-critical">Non-critical</option>
+                                </select>
+                            </label>
+                            <label className="select">
+                                Previous Criminal History:
+                                <input type="radio" name="previous_criminal_history" value="true" onChange={this.handleChange} /><label> Yes</label>
+                                <input type="radio" name="previous_criminal_history" value="false" onChange={this.handleChange} /><label> No</label>
+                            </label>
+                            <label className="select">
+                                Alcoholic: 
+                                <input type="radio" name="alcoholic_status" value="true" onChange={this.handleChange} /><label> Yes</label>
+                                <input type="radio" name="alcoholic_status" value="false" onChange={this.handleChange} /><label> No</label>
+                            </label>
+                            <label className="select">
+                                Marital Status (married):
+                                <input type="radio" name="marital_status" value="true" onChange={this.handleChange} /><label> Yes</label>
+                                <input type="radio" name="marital_status" value="false" onChange={this.handleChange} /><label> No</label>
+                            </label>
+                            <input className="input" type="number" name="numOfDependents" value={this.state.value} onChange={this.handleChange} placeholder="Number of Dependents" />
+                            <label className="select">
+                                Pre-existing Serious Condition:
+                                <select name="preexisting_serious_conditions" value={this.state.value} onChange={this.handleChange}>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </label>
 
-                    <input type="submit" value="Submit" />
-                </form>
+                            <input className="submitBtn" type="submit" value="Submit" />
+                        </form>
+                    </div>
+                </div>
             </div>
 
         )
