@@ -3,13 +3,27 @@ import ReactDOM from 'react-dom';
 import IndecisionApp from './components/IndecisionApp.jsx';
 import Register from './components/Register.jsx';
 import Discharge from './components/Discharge.jsx';
+const $ = require('jquery');
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: 'home'
+            view: 'home',
+            data: []
         }
+    }
+
+    componentDidMount() {
+        $.ajax({
+            type: 'GET',
+            url: '/beds',
+            success: (result) => {
+                this.setState({
+                    data: result
+                })
+            }
+        })
     }
 
     changeView(option) {
@@ -30,6 +44,8 @@ class App extends React.Component {
         } else if (this.state.view === 'updateHospital') {
             var currentView = <IndecisionApp />
         }
+
+        console.log(this.state.data)
         return (
             <div>
                 <div className="nav">
