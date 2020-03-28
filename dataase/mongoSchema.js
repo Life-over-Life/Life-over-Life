@@ -4,10 +4,11 @@ mongoose.connect('mongodb://localhost/hospitalData', { useNewUrlParser: true, us
 const Schema = mongoose.Schema;
 
 const bedsSchema = new Schema({
-    bed_id: {type: Number, required: true, unique: true },
-    bed_type: {type: String, required: true },
-    bed_status: {type: String, required: true },
-    patient_id: {type: Number, required: true, unique: true },
+    bed_id: { type: Number, required: true, unique: true },
+    bed_type: { type: String, required: true },
+    bed_status: { type: String, required: true },
+    patient_id: { type: Number, required: true, unique: true },
+    patient_name: { type: String },
     patient_gender: { type: String, required: true },
     patient_age: { type: Number, required: true },
     patient_address: { type: String },
