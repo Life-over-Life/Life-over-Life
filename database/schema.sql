@@ -12,7 +12,7 @@ CREATE TABLE nurses (
 
 CREATE TABLE diseases {
     disease_name varchar(20) NOT NULL,
-    mortality_rate int NOT NULL
+    mortality_rate_percent int NOT NULL
 };
 
 CREATE TABLE beds (
