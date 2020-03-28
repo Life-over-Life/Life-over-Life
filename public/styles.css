@@ -1,0 +1,37 @@
+body {
+    margin: 0px;
+    color: #292929;
+    background-color: #F3F3F3;
+}
+
+/*********** Navigation Bar **************/
+.nav {
+    background-color: #033578;
+    margin: 0px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #F3F3F3;
+}
+
+.web_title {
+    font-size: 1.9em;
+    margin-right: auto;
+    margin-left: 10px;
+    color: #f3f3f3;
+}
+
+.nav-selected {
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+
+.nav-unselected {
+    padding: 5px;
+    margin-right: 5px;
+    font-size: 1.1em;
+}
