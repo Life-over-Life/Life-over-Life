@@ -4,7 +4,7 @@ const port = 3001;
 const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const { getAllBedsData, getAllNursesData, getAllDiseases, dischargeBeds, addNewBed } = require('../database/index.js');
+const { getAllBedsData, getAllNursesData, getAllDiseases, dischargeBeds, addNewBed, addNewPatient } = require('../database/index.js');
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded());
@@ -49,6 +49,16 @@ app.patch('/beds/:bed_id', (req, res) => {
             res.status(200).send(result);
         }
     })
+});
+
+app.patch('/patients/:patient_id', (req, res) => {
+    addNewPatient(req.body, (error, result) => {
+        if (error) {
+            res.status(500).send(error);
+        } else {
+            res.status(200).send(result);
+        }
+    })
 })
 
 app.post('/addBeds', (req, res) => {
@@ -59,6 +69,6 @@ app.post('/addBeds', (req, res) => {
             res.status(201).send(result);
         }
     })
-})
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

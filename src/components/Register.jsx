@@ -24,7 +24,11 @@ class Register extends React.Component {
             doctor_satisfaction: "",
             patient_id: "",
             resultView: false,
-            doctor_satisfacted: true
+            doctor_satisfacted: true,
+            checkin_date: "",
+            patient_expected_discharge_date: "",
+            ventilator_needed: "false",
+            other_details: ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,7 +53,7 @@ class Register extends React.Component {
         event.preventDefault();
         $.ajax({
             type: 'PATCH',
-            url: '/patients/:patients_id',
+            url: '/patients/:patient_id',
             data: {
                 patient_id: this.state.patient_id,
                 bed_status: "Occupied",
@@ -58,7 +62,19 @@ class Register extends React.Component {
                 patient_age: this.state.age,
                 patient_address: this.state.address,
                 patient_contact_num: this.state.contact_num,
-                
+                patient_medical_history: this.state.medical_history,
+                patient_disease: this.state.disease,
+                patient_symptoms: this.state.symptoms,
+                patient_condition: this.state.condition,
+                patient_previous_criminal_history: this.state.previous_criminal_history,
+                patient_alcoholic_status: this.state.alcoholic_status,
+                patient_marital_status: this.state.marital_status,
+                patient_dependents: this.state.numOfDependents,
+                patient_preexisting_serious_conditions: this.state.preexisting_serious_conditions,
+                checkin_date: this.state.checkin_date,
+                patient_expected_discharge_date: this.state.patient_expected_discharge_date,
+                ventilator_needed: this.state.ventilator_needed,
+                other_details: this.state.other_details
             }
         })
     }
@@ -123,12 +139,24 @@ class Register extends React.Component {
                                 <input type="radio" name="doctor_satisfacted" value="true" onChange={this.handleChange} /><label> Yes</label>
                                 <input type="radio" name="doctor_satisfacted" value="false" onChange={this.handleChange} /><label> No</label>
                             </label>   
-                            {this.state.doctor_satisfacted === "false" && <form onSubmit={this.handleAddPatient}>
+                            {this.state.doctor_satisfacted === "false" && 
+                            <form onSubmit={this.handleAddPatient}>
                                 <br />
                                 <br />
                                 <br />
                                 <h4 className="result-title">Enter Patient ID</h4>
                                 <input className="input-result" type="number" name="patient_id" value={this.state.value} onChange={this.handleChange} />
+                                <h4 className="result-title">Enter Check-in Date</h4>
+                                <input className="input-result" type="number" name="checkin_date" value={this.state.value} onChange={this.handleChange} />
+                                <h4 className="result-title">Enter Patient Expected Discharge Date</h4>
+                                <input className="input-result" type="number" name="patient_expected_discharge_date" value={this.state.value} onChange={this.handleChange} />
+                                <h4 className="result-title">Enter Other Detail</h4>
+                                <input className="input-result" type="text" name="other_details" value={this.state.value} onChange={this.handleChange} />
+                                <label className="select-result">
+                                    Ventilator Needed:
+                                <input type="radio" name="ventilator_needed" value="true" onChange={this.handleChange} /><label> Yes</label>
+                                    <input type="radio" name="ventilator_needed" value="false" onChange={this.handleChange} /><label> No</label>
+                                </label>   
 
                                 <input className="submitBtn" type="submit" value="Accept Patient" />
                             </form>
