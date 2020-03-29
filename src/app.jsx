@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import IndecisionApp from './components/IndecisionApp.jsx';
 import Register from './components/Register.jsx';
 import Discharge from './components/Discharge.jsx';
+import Bedstatus from './components/Bedstatus.jsx';
 const $ = require('jquery');
 
 class App extends React.Component {
@@ -60,7 +61,7 @@ class App extends React.Component {
         } else if (this.state.view === 'discharge') {
             var currentView = <Discharge />
         } else if (this.state.view === 'bedStatus') {
-            var currentView = <IndecisionApp />
+            var currentView = <Bedstatus />
         } else if (this.state.view === 'updateHospital') {
             var currentView = <IndecisionApp />
         }

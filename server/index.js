@@ -3,7 +3,7 @@ const app = express();
 const port = 3001;
 const path = require('path');
 const morgan = require('morgan');
-const { getAllBedsData, getAllNursesData, getAllDiseases } = require('../database/index.js');
+const { getAllBedsData, getAllNursesData, getAllDiseases, dischargeBeds } = require('../database/index.js');
 app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname + '/../public')));
@@ -37,5 +37,15 @@ app.get('/diseases', (req, res) => {
         }
     })
 });
+
+app.patch('/beds/:bed_id', (req, res) => {
+    dischargeBeds(req.body, (error, result) => {
+        if (err) {
+            res.status(500).send(error);
+        } else {
+            res.status(200).send(result);
+        }
+    })
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
