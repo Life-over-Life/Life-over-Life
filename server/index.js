@@ -4,7 +4,7 @@ const port = 3001;
 const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const { getAllBedsData, getAllNursesData, getAllDiseases, dischargeBeds } = require('../database/index.js');
+const { getAllBedsData, getAllNursesData, getAllDiseases, dischargeBeds, addNewBed } = require('../database/index.js');
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded());
@@ -47,6 +47,16 @@ app.patch('/beds/:bed_id', (req, res) => {
             res.status(500).send(error);
         } else {
             res.status(200).send(result);
+        }
+    })
+})
+
+app.post('/addBeds', (req, res) => {
+    addNewBed(req.body, (error, result) => {
+        if (error) {
+            res.status(500).send(error);
+        } else {
+            res.status(201).send(result);
         }
     })
 })

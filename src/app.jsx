@@ -42,7 +42,7 @@ class App extends React.Component {
             url: '/diseases',
             success: (result) => {
                 this.setState({
-                    nursesData: result
+                    diseasesData: result
                 })
             }
         });
@@ -60,11 +60,11 @@ class App extends React.Component {
         } else if (this.state.view === 'register') {
             var currentView = <Register />
         } else if (this.state.view === 'discharge') {
-            var currentView = <Discharge />
+            var currentView = <Discharge data={this.data}/>
         } else if (this.state.view === 'bedStatus') {
             var currentView = <Bedstatus />
         } else if (this.state.view === 'updateHospital') {
-            var currentView = <UpdateHospital />
+            var currentView = <UpdateHospital data={this.state} />
         }
 
         console.log('bedsData', this.state.bedsData);
