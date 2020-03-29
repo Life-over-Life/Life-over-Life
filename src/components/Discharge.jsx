@@ -18,27 +18,6 @@ class Discharge extends React.Component {
         });
     }
 
-    // handleSubmit(event) {
-    //     event.preventDefault();
-    //     console.log(this.state.bed_id);
-    //     console.log(this.state.patient_id);
-    //     var bed_id = this.state.bed_id;
-    //     if (bed_id === "" || this.state.patient_id === "") {
-    //         alert('Please make sure the form is filled out correctly.');
-    //     } else {
-    //         $.ajax({
-    //             type: 'PATCH',
-    //             url: '/beds/:bed_id',
-    //             data: { bed_id: bed_id, patient_id: "hello", patient_name: null, patient_gender: null, patient_age: null, patient_address: null, patient_contact_num: null, patient_medical_history: null, patient_disease: null, patient_symptoms: null, patient_condition: null, patient_previous_criminal_history: null, patient_alcoholic_status: null, patient_marital_status: null, patient_dependents: null, patient_preexisting_serious_condition: null, checkin_date: null, patient_expected_discharge_date: null, ventilator_needed: null, other_details: null },
-    //             success: console.log()
-    //         });
-    //         this.setState({
-    //             bed_id: "",
-    //             patient_id: ""
-    //         });
-    //     }
-    // }
-
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.state.bed_id);
@@ -49,8 +28,10 @@ class Discharge extends React.Component {
         } else {
             $.ajax({
                 type: 'PATCH',
-                url: '/beds/:bed_id',
-                data: { bed_id: bed_id, patient_name: "Peter" },
+                url: '/beds/'+bed_id,
+                data: { bed_id: bed_id, patient_id: 0, patient_name: null, patient_gender: 'male', patient_age: 0, patient_address: null, patient_contact_num: 0, patient_medical_history: null, patient_disease: null, patient_symptoms: null,
+                patient_condition: 'non-critical',
+                patient_previous_criminal_history: 'false',patient_alcoholic_status: 'false', patient_marital_status: 'false', patient_dependents: 0, patient_preexisting_serious_conditions: 'false', checkin_date: null, patient_expected_discharge_date: null, ventilator_needed: 'false', other_details: null },
                 success: console.log()
             });
             this.setState({
@@ -69,8 +50,8 @@ class Discharge extends React.Component {
                             Discharge a Patient
                         </h1>
                         <form onSubmit={this.handleSubmit}>
-                            <input className="input" type="number" name="bed_id" value={this.state.value} onChange={this.handleChange} placeholder="Bed ID:" />
-                            <input className="input" type="number" name="patient_id" value={this.state.value} onChange={this.handleChange} placeholder="Patient ID:" />
+                            <input className="input" type="number" name="bed_id" value={this.state.value} onChange={this.handleChange} placeholder="Bed ID" />
+                            <input className="input" type="number" name="patient_id" value={this.state.value} onChange={this.handleChange} placeholder="Patient ID" />
                             <input className="dischargeBtn" type="submit" value="Submit" />
                         </form>
                     </div>

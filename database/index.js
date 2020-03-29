@@ -35,23 +35,10 @@ const getAllDiseases = (diseases, callback) => {
     })
 };
 
-// const dischargeBeds = (beds, callback) => {
-//     console.log('beds', beds);
-//     var sql = 'UPDATE beds SET bed_status="Empty" patient_id=? patient_name=? patient_gender=? patient_age=? patient_address=? patient_contact_num=? patient_medical_history=? alcoholic_status=? marital_status=? numOfDependents=? preexisting_serious_conditions=? WHERE patient_id=6';
-//     connection.query(sql, [beds.patient_id, beds.patient_name, beds.patient_gender, beds.patient_age, beds.patient_address, beds.patient_contact_num, beds.patient_medical_history, beds.alcoholic_status, beds.marital_status, beds.numOfDependents, beds.preexisting_serious_conditions], (error, result) => {
-//         if (error) {
-//             callback(error);
-//             console.log(error)
-//         } else {
-//             callback(null, result);
-//             console.log("ues")
-//         }
-//     });
-// };
-
 const dischargeBeds = (beds, callback) => {
-    var sql = 'UPDATE beds SET patient_name=? WHERE bed_id=?';
-    connection.query(sql, [beds.patient_name, beds.bed_id], (error, result, fields) => {
+    console.log('beds', beds);
+    var sql = 'UPDATE beds SET bed_status="Empty", patient_id=?, patient_name=?, patient_gender=?, patient_age=?, patient_address=?, patient_contact_num=?, patient_medical_history=?, patient_disease=?, patient_symptoms=?, patient_condition=?, patient_previous_criminal_history=?, patient_alcoholic_status=?, patient_marital_status=?, patient_dependents=?, patient_preexisting_serious_conditions=?, checkin_date=?, patient_expected_discharge_date=?, ventilator_needed=?  WHERE bed_id=?';
+    connection.query(sql, [beds.patient_id, beds.patient_name, beds.patient_gender, beds.patient_age, beds.patient_address, beds.patient_contact_num, beds.patient_medical_history, beds.patient_disease, beds.patient_symptoms, beds.patient_condition, beds.patient_previous_criminal_history, beds.patient_alcoholic_status, beds.patient_marital_status, beds.patient_dependents, beds.patient_preexisting_serious_conditions, beds.checkin_date, beds.patient_expected_discharge_date, beds.ventilator_needed, beds.bed_id], (error, result) => {
         if (error) {
             callback(error);
             console.log(error)
