@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 class Register extends React.Component {
     constructor(props) {
@@ -35,6 +36,9 @@ class Register extends React.Component {
     }
 
     render() {
+        console.log('diseaseData', this.props.data.diseasesData)
+        console.log('bedsData', this.props.data.bedsData);
+        console.log('nursesData', this.props.data.nursesData);
         return (
             <div className="wrapper">
                 <div className="register-form">

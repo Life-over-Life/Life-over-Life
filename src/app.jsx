@@ -58,21 +58,21 @@ class App extends React.Component {
         if (this.state.view === 'home') {
             var currentView = <IndecisionApp />
         } else if (this.state.view === 'register') {
-            var currentView = <Register />
+            var currentView = <Register data={this.state} />
         } else if (this.state.view === 'discharge') {
-            var currentView = <Discharge data={this.data}/>
+            var currentView = <Discharge data={this.state}/>
         } else if (this.state.view === 'bedStatus') {
             var currentView = <Bedstatus />
         } else if (this.state.view === 'updateHospital') {
             var currentView = <UpdateHospital data={this.state} />
         }
 
-        console.log('bedsData', this.state.bedsData);
-        console.log('nursesData', this.state.nursesData);
+        // console.log('bedsData', this.state.bedsData);
+        // console.log('nursesData', this.state.nursesData);
         return (
             <div>
                 <div className="nav">
-                    <span className="web_title">Hospital Tracker</span>
+                    <span className="web_title">Life-over-Life</span>
                     <span className={this.state.view === 'home'
                         ? 'nav-selected'
                         : 'nav-unselected'} 
