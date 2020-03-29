@@ -132,7 +132,7 @@ body {
     border-bottom: 2px solid rgba(76, 79, 22);
     padding: 10px;
     color: rgba(76, 79, 22);
-    width: 180%;
+    width: 100%;
 }
 
 .input-fields .select-result {
@@ -225,4 +225,23 @@ body {
     color: #fff;
     cursor: pointer;
     text-transform: uppercase;
+}
+
+/****** Disease Table *******/
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color:rgba(255, 255, 204, 1)}
+tr:nth-child(odd){background-color: rgba(247, 202, 24, 1)}
+
+th {
+    background-color: rgba(1, 50, 67, 1);
+    color: white;
 }

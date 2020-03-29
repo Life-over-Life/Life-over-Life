@@ -24,10 +24,11 @@ class Register extends React.Component {
             doctor_satisfaction: "",
             patient_id: "",
             resultView: false,
-            doctor_satisfacted: false
+            doctor_satisfacted: true
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleAddPatient = this.handleAddPatient.bind(this);
     }
 
     handleChange(event) {
@@ -38,31 +39,31 @@ class Register extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        // console.log(this.state)
+
         this.setState({
             resultView: true
         })
     }
 
+    handleAddPatient(event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'PATCH',
+            url: '/patients/:patients_id',
+            data: {
+                patient_id: this.state.patient_id,
+                bed_status: "Occupied",
+                patient_name: this.state.name,
+                patient_gender: this.state.gender,
+                patient_age: this.state.age,
+                patient_address: this.state.address,
+                patient_contact_num: this.state.contact_num,
+                
+            }
+        })
+    }
+
     render() {
-        // console.log('diseasesData', this.props.data.diseasesData);
-        // console.log('nursesData', this.props.data.nursesData);
-        // console.log(this.state.age)
-        // console.log(this.state.doctor_satisfacted)
-
-        if (this.state.doctor_satisfacted) {
-            var confirmChangeForm = <form onSubmit={this.handleSubmit}>
-                <br />
-                <br />
-                <br />
-                <h4 className="result-title">Enter Patient ID</h4>
-                <input className="input-result" type="number" name="patient_id" value={this.state.value} onChange={this.handleChange} />
-
-                <input className="submitBtn" type="submit" value="Accept Patient" />
-            </form>
-        } else {
-            <div></div>
-        }
 
         return (
             <div className="wrapper">
@@ -71,6 +72,26 @@ class Register extends React.Component {
                     <div className="result-form">
                         <div className="input-fields">
                             <h1 className="result-title">Patient Detail</h1>
+                            <h4 className="result-title">Name:
+                        <p className="result-field"> {this.state.name}</p>
+                            </h4>
+                            <h4 className="result-title">Age:
+                        <p className="result-field"> {this.state.age}</p>
+                            </h4>
+                            <h4 className="result-title">Alcoholic Status:
+                        <p className="result-field"> {this.state.alcoholic_status}</p>
+                            </h4>
+                            <h4 className="result-title">Marital Status:
+                        <p className="result-field"> {this.state.marital_status}</p>
+                            </h4>
+                            <h4 className="result-title">Number of Dependents:
+                        <p className="result-field"> {this.state.numOfDependents}</p>
+                            </h4>
+                            <h4 className="result-title">Pre-existing Serious Conditions:
+                        <p className="result-field"> {this.state.preexisting_serious_conditions}</p>
+                            </h4>
+
+                            <h1 className="result-title">Inpatient With Minimum Need of Care Detail</h1>
                             <h4 className="result-title">Name:
                         <p className="result-field"> {this.state.name}</p>
                             </h4>
@@ -98,12 +119,19 @@ class Register extends React.Component {
                             <br />
                             <h1 className="result-title">Doctor Review</h1>
                             <label className="select-result">
-                                Are You Satisface:
+                                Are You Satisfacted:
                                 <input type="radio" name="doctor_satisfacted" value="true" onChange={this.handleChange} /><label> Yes</label>
                                 <input type="radio" name="doctor_satisfacted" value="false" onChange={this.handleChange} /><label> No</label>
-                            </label>
-                            {
-                                confirmChangeForm
+                            </label>   
+                            {this.state.doctor_satisfacted === "false" && <form onSubmit={this.handleAddPatient}>
+                                <br />
+                                <br />
+                                <br />
+                                <h4 className="result-title">Enter Patient ID</h4>
+                                <input className="input-result" type="number" name="patient_id" value={this.state.value} onChange={this.handleChange} />
+
+                                <input className="submitBtn" type="submit" value="Accept Patient" />
+                            </form>
                             }
                         </div>
                     </div>

@@ -8,7 +8,6 @@ class DiseasesDataTable extends React.Component {
 
     render() {
         var rows = [];
-        console.log(this.props.data.diseasesData);
         this.props.data.diseasesData.map((disease, i) => {
             rows.push(<DiseasesList data={disease} key={i} />)
         })
