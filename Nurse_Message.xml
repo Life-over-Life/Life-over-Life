@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+  <Say voice='alice'>Nurse, please clear the bed and discharge the patient. A new patient is on its way.</Say>
+</Response>
