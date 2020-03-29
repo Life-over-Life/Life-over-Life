@@ -40,7 +40,7 @@ app.get('/diseases', (req, res) => {
 
 app.patch('/beds/:bed_id', (req, res) => {
     dischargeBeds(req.body, (error, result) => {
-        if (err) {
+        if (error) {
             res.status(500).send(error);
         } else {
             res.status(200).send(result);
