@@ -110,6 +110,48 @@ body {
     text-transform: uppercase;
 }
 
+.result-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(244, 247, 53, 0.8);
+    padding: 80px 100px;
+    border-radius: 5px;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0,0,0,0.13);
+}
+
+.result-title {
+    color: 	rgba(52, 54, 15);
+}
+
+.input-fields .input-result {
+    margin: 10px 0;
+    display: block;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid rgba(76, 79, 22);
+    padding: 10px;
+    color: rgba(76, 79, 22);
+    width: 180%;
+}
+
+.input-fields .select-result {
+    margin: 10px 0;
+    font-size: 12.5px;
+    display: block;
+    background: transparent;
+    border: 0;
+    padding: 10px;
+    color: rgba(76, 79, 22);
+    width: 150%;
+}
+
+
+.result-field {
+    color: #848686;
+    display: inline;
+}
+
 /******* Discharger Page **********/
 .discharge-wrapper {
     position: absolute;
@@ -141,6 +183,7 @@ body {
     cursor: pointer;
     text-transform: uppercase;
 }
+
 
 /******* UpdateHospital ********/
 .updateHospital-wrapper {

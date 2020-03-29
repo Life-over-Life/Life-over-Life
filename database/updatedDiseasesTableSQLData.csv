@@ -1,0 +1,11 @@
+disease_name, mortality_rate_percent
+Sepsis, 50
+Traumatic Brain Injury, 1
+Shock, 39
+Stroke, 28
+Ruptured Brain Aneurysm, 40
+Trauma, 16
+Post-operative Intensive Care, 3
+Cancer-related Intensive Care, 47
+Heart Failure, 10
+Respiratory (Lung) Failure, 45

@@ -66,7 +66,7 @@ class App extends React.Component {
         } else if (this.state.view === 'updateHospital') {
             var currentView = <UpdateHospital data={this.state} />
         }
-
+        
         // console.log('bedsData', this.state.bedsData);
         // console.log('nursesData', this.state.nursesData);
         return (

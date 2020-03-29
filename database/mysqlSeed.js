@@ -139,7 +139,7 @@ writeBedsData(writeUsers, 'utf-8', () => {
 
 LOAD DATA LOCAL INFILE '/mnt/c/Users/hongk/Desktop/HW/hospitalTracker/database/nursesTableSQLData.csv' INTO TABLE nurses FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES (nurse_name, nurse_phone_number);
 
-LOAD DATA LOCAL INFILE '/mnt/c/Users/hongk/Desktop/HW/hospitalTracker/database/diseasesTableSQLData.csv' INTO TABLE diseases FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES (disease_name, mortality_rate_percent);
+LOAD DATA LOCAL INFILE '/mnt/c/Users/hongk/Desktop/HW/hospitalTracker/database/updatedDiseasesTableSQLData.csv' INTO TABLE diseases FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES (disease_name, mortality_rate_percent);
 
 LOAD DATA LOCAL INFILE '/mnt/c/Users/hongk/Desktop/HW/hospitalTracker/database/bedsTableSQLData.csv' INTO TABLE beds FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES (bed_type, bed_status, patient_id, patient_name, patient_gender, patient_age, patient_address, patient_contact_num, patient_medical_history, patient_disease, patient_symptoms, patient_condition, patient_previous_criminal_history, patient_alcoholic_status, patient_marital_status, patient_dependents, patient_preexisting_serious_conditions, nurse_id, checkin_date, patient_expected_discharge_date, ventilator_needed, other_details);
 */
