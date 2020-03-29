@@ -2,6 +2,26 @@ import React from 'react';
 import DiseasesDataTable from './DiseasesTable.jsx';
 import $ from 'jquery';
 
+var Theta = [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1];
+function EvalHypothesis(X) {
+    var HypoX = 0;
+    var i
+    for (i = 0; i < Theta.length; i++) {
+        HypoX += Theta[i] * X[i];
+    }
+    return HypoX;
+}
+function GradientDescent(X, Y) {
+    HypoX = EvalHypothesis(X);
+    var lr = 0.001;
+    var i;
+    var PartialDerivative
+    for (i = 0; i < Theta.length; i++) {
+        PartialDerivative = lr * (Y - HypoX) * X[i];
+        Theta[i] += PartialDerivative;
+    }
+}
+
 class Register extends React.Component {
     constructor(props) {
         super(props);
@@ -49,6 +69,56 @@ class Register extends React.Component {
         })
     }
 
+    FindLeastPriority() {
+        var X = []
+        var i;
+        var PriorityPoints = []
+        for (i = 0; i < this.props.data.bedsData.length; ++i) {
+            var TempX = [];
+            TempX[0] = Number(this.props.data.bedsData[i].patient_age);
+            if (this.props.data.bedsData[i].patient_alcoholic_status === 'true') {
+                TempX[1] = 0;
+            }
+            else {
+                TempX[1] = 1;
+            }
+            if (this.props.data.bedsData[i].patient_marital_status === 'true') {
+                TempX[2] = 1;
+            }
+            else {
+                TempX[2] = 0;
+            }
+            TempX[3] = Number(this.props.data.bedsData[i].patient_dependents);
+            if (this.props.data.bedsData[i].patient_preexisting_serious_conditions === 'true') {
+                TempX[4] = 0;
+            }
+            else {
+                TempX[4] = 1;
+            }
+            TempX[5] = this.props.data.bedsData[i]
+            TempX[0] = TempX[0] / 100;
+            TempX[0] = 1 / TempX[0];
+            TempX[5] = 0;
+            if (TempX[4] == 1) {
+                TempX[4] = 0;
+            }
+            else {
+                TempX[4] = 1;
+            }
+            X = [1, TempX[0], Math.pow(TempX[0], 2), TempX[1], Math.pow(TempX[1], 2), TempX[2], Math.pow(TempX[2], 2), TempX[3], Math.pow(TempX[3], 2), TempX[4], Math.pow(TempX[4], 2), TempX[5], Math.pow(TempX[5], 2)];
+            PriorityPoints[i] = EvalHypothesis(X);
+        }
+        var min_priority = PriorityPoints[0];
+        var min_index = 0;
+        for (i = 0; i < this.props.data.bedsData.length; ++i) {
+            if (PriorityPoints[i] < min_priority) {
+                min_priority = PriorityPoints[i];
+                min_index = i;
+            }
+        }
+        return min_index;
+    }
+
     handleAddPatient(event) {
         event.preventDefault();
         $.ajax({
@@ -57,6 +127,7 @@ class Register extends React.Component {
             data: {
                 patient_id: this.state.patient_id,
                 bed_status: "Occupied",
+                patient_id: Math.floor(Math.random()*1000),
                 patient_name: this.state.name,
                 patient_gender: this.state.gender,
                 patient_age: this.state.age,
@@ -80,7 +151,7 @@ class Register extends React.Component {
     }
 
     render() {
-
+        var minPatient = this.props.data.bedsData[this.FindLeastPriority()];
         return (
             <div className="wrapper">
 
@@ -107,24 +178,28 @@ class Register extends React.Component {
                         <p className="result-field"> {this.state.preexisting_serious_conditions}</p>
                             </h4>
 
+
                             <h1 className="result-title">Inpatient With Minimum Need of Care Detail</h1>
+                            <h4 className="result-title">Patient ID:
+                        <p className="result-field"> {minPatient.patient_id}</p>
+                            </h4>
                             <h4 className="result-title">Name:
-                        <p className="result-field"> {this.state.name}</p>
+                        <p className="result-field"> {minPatient.patient_name}</p>
                             </h4>
                             <h4 className="result-title">Age:
-                        <p className="result-field"> {this.state.age}</p>
+                        <p className="result-field"> {minPatient.patient_age}</p>
                             </h4>
                             <h4 className="result-title">Alcoholic Status:
-                        <p className="result-field"> {this.state.alcoholic_status}</p>
+                        <p className="result-field"> {minPatient.patient_alcoholic_status}</p>
                             </h4>
                             <h4 className="result-title">Marital Status:
-                        <p className="result-field"> {this.state.marital_status}</p>
+                        <p className="result-field"> {minPatient.patient_marital_status}</p>
                             </h4>
                             <h4 className="result-title">Number of Dependents:
-                        <p className="result-field"> {this.state.numOfDependents}</p>
+                        <p className="result-field"> {minPatient.patient_dependents}</p>
                             </h4>
                             <h4 className="result-title">Pre-existing Serious Conditions:
-                        <p className="result-field"> {this.state.preexisting_serious_conditions}</p>
+                        <p className="result-field"> {minPatient.patient_preexisting_serious_conditions}</p>
                             </h4>
                             <br />
                             <br />

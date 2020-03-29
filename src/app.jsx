@@ -11,7 +11,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: 'home',
+            view: 'register',
             bedsData: [],
             nursesData: [],
             diseasesData: [],
